@@ -35,7 +35,7 @@ const InitiateContract = () => {
 
     console.log("Initiate contract");
 
-    const url = "https://1394-115-110-224-178.ngrok-free.app/createEscrow";
+    const url = "https://a8c3-115-110-224-178.ngrok-free.app/createEscrow";
 
     const payload = {
       buyerAddress: "0x3A970B05EA9E524A1a30A9048C48d12EA201792A",

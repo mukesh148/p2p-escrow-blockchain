@@ -35,13 +35,13 @@ const History = () => {
   const [loading, setLoading] = useState(true);
 
   const buyerContractsUrl =
-    "https://1394-115-110-224-178.ngrok-free.app/approvePayout";
+    "https://a8c3-115-110-224-178.ngrok-free.app/getSellerContracts";
 
   useEffect(() => {
     const fetchBuyerContracts = async () => {
       try {
         const response = await fetch(buyerContractsUrl, {
-          method: "POST",
+          method: "GET",
           mode: "no-cors",
         });
 
