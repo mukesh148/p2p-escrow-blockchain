@@ -1,0 +1,62 @@
+src/App.css
+
+.App {
+  text-align: center;
+}
+
+.left-side {
+  background-color: #ffffff; /* Slightly darker grey for left side */
+}
+
+.right-side {
+  background-color: #ffffff; /* Slightly darker grey for right side */
+}
+
+.main-content {
+  background-color: #000027; /* White for the center part */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dropdown,
+.seller-list,
+.add-funds,
+.initiate-contract {
+  margin: 20px;
+}
+
+table {
+  margin: auto;
+  width: 50%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.status {
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Optional: Slide up animation */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
