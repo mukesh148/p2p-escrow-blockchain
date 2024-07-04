@@ -4,9 +4,19 @@ import { React, useState } from "react";
 import { Box, Paper, Button } from "@mui/material";
 import { Grid, Typography, Container } from "@mui/material";
 import axios from "axios";
+import AddFundsDialog from "./AddFundsDialog";
 
 const AddFunds = () => {
   const [fundAdded, setIsFundsAdded] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
 
   const handleAddFunds = async () => {
     console.log("Add funds Init");
@@ -94,12 +104,16 @@ const AddFunds = () => {
               variant="contained"
               color="primary"
               onClick={handleAddFunds}
+              //   onClick={handleOpenDialog}
             >
               Add Funds
             </Button>
           </Grid>
         </Grid>
       )}
+
+      {/* Dialog Component */}
+      {/* <AddFundsDialog open={dialogOpen} onClose={handleCloseDialog} /> */}
 
       {fundAdded !== null && (
         <Grid container spacing={2} justifyContent="center">
