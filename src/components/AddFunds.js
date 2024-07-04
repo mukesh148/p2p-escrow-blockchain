@@ -1,12 +1,12 @@
 // src/components/AddFunds.js
 
-import React from "react";
-import { Button } from "@mui/material";
+import { React, useState } from "react";
+import { Box, Paper, Button } from "@mui/material";
 import { Grid, Typography, Container } from "@mui/material";
 import axios from "axios";
 
 const AddFunds = () => {
-  var balance = null;
+  const [fundAdded, setIsFundsAdded] = useState(null);
 
   const handleAddFunds = async () => {
     console.log("Add funds Init");
@@ -51,7 +51,7 @@ const AddFunds = () => {
       }
 
       const data = await response.json();
-      balance = requestData.transfer_amt;
+      setIsFundsAdded(requestData.validate.transfer_amt);
       console.log("Successfully added funds:", data);
 
       // Optionally handle the response data or update state
@@ -70,30 +70,75 @@ const AddFunds = () => {
         padding: 2,
       }}
     >
-      <Grid container spacing={2} justifyContent="center">
-        {/* Left Part: Text */}
-        <Grid item xs={6}>
-          <Typography variant="body1">
-            Please add fund before initiating the smart contract with the
-            seller.
-          </Typography>
-        </Grid>
+      {fundAdded === null && (
+        <Grid container spacing={2} justifyContent="center">
+          {/* Left Part: Text */}
+          <Grid item xs={6}>
+            <Typography variant="body1">
+              Please add fund before initiating the smart contract with the
+              seller.
+            </Typography>
+          </Grid>
 
-        {/* Right Part: Add Funds Button */}
-        <Grid
-          item
-          xs={6}
-          container
-          justifyContent="center"
-          //   sx={{
-          //     background: "#000000",
-          //   }}
-        >
-          <Button variant="contained" color="primary" onClick={handleAddFunds}>
-            Add Funds
-          </Button>
+          {/* Right Part: Add Funds Button */}
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="center"
+            //   sx={{
+            //     background: "#000000",
+            //   }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleAddFunds}
+            >
+              Add Funds
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
+      )}
+
+      {fundAdded !== null && (
+        <Grid container spacing={2} justifyContent="center">
+          {/* Left Part: Text */}
+          <Grid item xs={6}>
+            <Typography variant="body1">
+              Oh Bouy! <br /> Funds add successfully
+            </Typography>
+          </Grid>
+
+          {/* Right Part: Add Funds Button */}
+          <Grid
+            item
+            xs={6}
+            container
+            justifyContent="center"
+            //   sx={{
+            //     background: "#000000",
+            //   }}
+          >
+            <Paper
+              elevation={3}
+              sx={{
+                width: 300,
+                padding: 2,
+                borderRadius: 2,
+                backgroundColor: "#f5f5f5",
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="h6"> Balance </Typography>
+              <Typography variant="body1">{fundAdded}/-</Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+      )}
     </Container>
 
     // <Button variant="contained" color="primary" onClick={handleAddFunds}>
